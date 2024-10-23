@@ -62,7 +62,8 @@ int print_hex_val(unsigned long long nb, int is_upper)
 int calc_division_num(unsigned long long nb)
 {
     int n = 0;
-
+    if (nb == 0)
+        return 1;
     while (nb != 0) {
         nb = nb/16;
         n += 1;
@@ -70,3 +71,15 @@ int calc_division_num(unsigned long long nb)
     return n;
 }
 
+unsigned long long oct(unsigned long long nb)
+{
+    int idx = 0;
+    unsigned long long val = 0;
+
+    while (nb > 0){
+        val += (nb % 8) * (power(10, idx));
+        nb = nb / 8;
+        idx += 1;
+    }
+    return val;
+}

@@ -7,6 +7,28 @@
 
 #include "my.h"
 #include <stdarg.h>
+int print_hex_sub(unsigned long long val, char *flag, int *data, char c2)
+{
+    int value = 0;
+
+    if (c2 == ' ' && flag[0] == '0')
+        value += draw_line(c2, data[3]);
+    if (flag[2] == '1'){
+        if (data[2] == 0 && val > 0)
+            value += my_putstr("0x");
+        if (data[2] == 1 && val > 0)
+            value += my_putstr("0X");
+    }
+    if (c2 == '0' && flag[0] == '0')
+        value += draw_line(c2, data[3]);
+    if (val > 0)
+        value += print_hex_val(val, data[2]);
+    else
+        value += my_put_nbr_uns(val);
+    if (flag[0] == '1')
+        value += draw_line(' ', data[3]);
+    return value;
+}
 
 int print_str(char *val, char *flag, int *data)
 {
@@ -61,7 +83,7 @@ int print_int(long long val, char *flag, int *data, char c2)
     return value;
 }
 
-int print_int_uns(unsigned long long val, char *flag, int *data, char c2)
+int print_uns(unsigned long long val, char *flag, int *data, char c2)
 {
     int size = data[0] - calc_int_len_uns(val);
     int value = 0;
@@ -75,35 +97,14 @@ int print_int_uns(unsigned long long val, char *flag, int *data, char c2)
         value += draw_line(' ', size);
     return value;
 }
-int print_hex_sub(unsigned long long val, char *flag, int *data, char c2)
-{
-    int value = 0;
 
-    if (c2 == ' ' && flag[0] == '0')
-        value += draw_line(c2, data[3]);
-    if (flag[2] == '1'){
-        if (data[2] == 0)
-            value += my_putstr("0x");
-        else
-            value += my_putstr("0X");
-    }
-    if (c2 == '0' && flag[0] == '0')
-        value += draw_line(c2, data[3]);
-    value += print_hex_val(val, data[2]);
-    if (flag[0] == '1')
-        value += draw_line(' ', data[3]);
-    return value;
-}
 int print_hex(unsigned long long val, char *flag, int *data, char c2)
 {
     int size;
     int value = 0;
     unsigned long long number;
 
-    if (val < 0)
-        number = 4294967295 - ((val * -1) - 1);
-    else
-        number = val;
+    number = val;
     if (flag[2] == '1')
         size = data[0] - (calc_division_num(number)+2);
     else

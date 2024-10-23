@@ -48,7 +48,7 @@ int my_put_nbr(long long nb)
 
 int my_put_nbr_uns(unsigned long long nb)
 {
-    int nb2 = nb;
+    unsigned long long nb2 = nb;
     int count = 1;
 
     while (nb2 > 9){

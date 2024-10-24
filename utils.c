@@ -8,7 +8,8 @@
 #include "my.h"
 #include <stdarg.h>
 
-static int print_num(unsigned long long nb, unsigned long long nb2, int count, int special)
+static int print_num(unsigned long long nb,
+    unsigned long long nb2, int count, int special)
 {
     for (int i = count; i > 0; i--){
         nb2 = nb;

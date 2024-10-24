@@ -28,7 +28,8 @@ int print_uns(unsigned long long val, char *flag, int *data, char c2);
 int print_hex(unsigned long long val, char *flag, int *data, char c2);
 int calc_division_num(unsigned long long nb);
 int print_hex_val(unsigned long long nb, int is_upper);
-static int print_hex_sub(unsigned long long val, char *flag, int *data, char c2);
+static int print_hex_sub(unsigned long long val,
+    char *flag, int *data, char c2);
 int print_formatted(char c, va_list list, int *data, char *flag);
 unsigned long long oct(unsigned long long nb);
 int my_put_float(double nbr, int pre, char *flag);

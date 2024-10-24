@@ -7,7 +7,8 @@
 
 #include "my.h"
 #include <stdarg.h>
-int print_hex_sub(unsigned long long val, char *flag, int *data, char c2)
+static int print_hex_sub(unsigned long long val,
+    char *flag, int *data, char c2)
 {
     int value = 0;
 

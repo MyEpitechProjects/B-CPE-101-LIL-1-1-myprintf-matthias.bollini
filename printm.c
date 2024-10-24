@@ -29,6 +29,7 @@ static int print_formatted_sub7(char c, va_list list, int *data, char *flag)
             data[1] = 6;
         return print_float(va_arg(list, double), flag, data, flag[6]);
     }
+    return 0;
 }
 
 static int print_formatted_sub6(char c, va_list list, int *data, char *flag)

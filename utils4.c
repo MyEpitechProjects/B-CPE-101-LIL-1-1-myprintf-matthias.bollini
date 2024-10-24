@@ -121,7 +121,6 @@ int calc_float_len(double nbr, unsigned int pre, char *flag)
 int my_put_float(double nbr, int pre, char *flag)
 {
     int number = 0;
-    int int_dec;
     int tab[pre + 1];
     int tab2[3];
     int value;

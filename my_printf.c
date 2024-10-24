@@ -30,8 +30,6 @@ static int handler_size(const char *format, int *idx, va_list list)
 
 static char handler_flag(const char *format, int *idx, char *neg)
 {
-    int d;
-
     while (is_flg(format[*idx])) {
         if (format[*idx] == '-')
             neg[0] = '1';
@@ -45,6 +43,7 @@ static char handler_flag(const char *format, int *idx, char *neg)
             neg[4] = '1';
         *idx += 1;
     }
+    return (0);
 }
 
 static int handler_spe2(const char *format, va_list list, int *idx, int *data)
@@ -61,6 +60,22 @@ static int handler_spe2(const char *format, va_list list, int *idx, int *data)
         *idx += 2;
         data[1] = va_arg(list, int);
     }
+    return 0;
+}
+
+static int handler_len_modif3(const char *format, int *idx, char *flag)
+{
+    if (format[*idx] == 'z' || format[*idx] == 'Z'){
+        flag[5] = 7;
+        *idx += 1;
+        return 0;
+    }
+    if (format[*idx] == 't'){
+        flag[5] = 8;
+        *idx += 1;
+        return 0;
+    }
+    return 0;
 }
 
 static int handler_len_modif2(const char *format, int *idx, char *flag)
@@ -75,16 +90,8 @@ static int handler_len_modif2(const char *format, int *idx, char *flag)
         *idx += 1;
         return 0;
     }
-    if (format[*idx] == 'z' || format[*idx] == 'Z'){
-        flag[5] = 7;
-        *idx += 1;
-        return 0;
-    }
-    if (format[*idx] == 't'){
-        flag[5] = 8;
-        *idx += 1;
-        return 0;
-    }
+    handler_len_modif3(format, idx, flag);
+    return 0;
 }
 
 static int handler_len_modif(const char *format, int *idx, char *flag)
@@ -108,6 +115,7 @@ static int handler_len_modif(const char *format, int *idx, char *flag)
         return 0;
     }
     handler_len_modif2(format, idx, flag);
+    return 0;
 }
 
 static int handler_spe(const char *format, va_list list, int *idx)
@@ -147,11 +155,9 @@ static int my_printf_sub2(const char *format, va_list list, int *idx, int nm)
 
 static int my_printf_sub1(const char *format, va_list list, int idx, int f)
 {
-    int d;
     int num = 0;
 
     while (format[idx] != '\0') {
-        d = 0;
         num += my_printf_sub2(format, list, &idx, num);
         idx += 1;
     }

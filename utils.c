@@ -21,6 +21,7 @@ static int print_num(unsigned long long nb,
     if (special == 1){
         my_putchar(48 + 8);
     }
+    return 0;
 }
 
 int my_put_nbr(long long nb)

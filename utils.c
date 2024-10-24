@@ -30,7 +30,7 @@ int my_put_nbr(long long nb)
     int special = 0;
 
     if (nb < 0) {
-        my_putchar('-');
+        count += my_putchar('-');
         if (nb == -2147483648){
             nb = 214748364;
             special = 1;

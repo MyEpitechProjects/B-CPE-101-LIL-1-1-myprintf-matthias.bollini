@@ -45,7 +45,7 @@ static char handler_flag(const char *format, int *idx, char *neg)
             neg[4] = '1';
         *idx += 1;
     }
-}        
+}
 
 static int handler_spe2(const char *format, va_list list, int *idx, int *data)
 {
@@ -62,48 +62,50 @@ static int handler_spe2(const char *format, va_list list, int *idx, int *data)
         data[1] = va_arg(list, int);
     }
 }
+
 static int handler_len_modif2(const char *format, int *idx, char *flag)
 {
     if (format[*idx] == 'L') {
-	flag[5] = 5;
-	*idx += 1;
-	return 0;
+        flag[5] = 5;
+        *idx += 1;
+        return 0;
     }
     if (format[*idx] == 'j') {
-	flag[5] = 6;
-	*idx += 1;
-	return 0;
+        flag[5] = 6;
+        *idx += 1;
+        return 0;
     }
     if (format[*idx] == 'z' || format[*idx] == 'Z'){
-	flag[5] = 7;
-	*idx += 1;
-	return 0;
+        flag[5] = 7;
+        *idx += 1;
+        return 0;
     }
     if (format[*idx] == 't'){
         flag[5] = 8;
-	*idx +=1;
-	return 0;
+        *idx += 1;
+        return 0;
     }
 }
+
 static int handler_len_modif(const char *format, int *idx, char *flag)
 {
     if (format[*idx] == 'h'){
-	if (format[*idx+1] == 'h'){
+        if (format[*idx + 1] == 'h'){
             flag[5] = 1;
-	    *idx += 1;
+            *idx += 1;
         } else
             flag[5] = 2;
         *idx += 1;
-	return 0;
+        return 0;
     }
     if (format[*idx] == 'l' || format[*idx] == 'q'){
-        if (format[*idx+1] == 'l' || format[*idx] == 'q'){
-      	    flag[5] = 4;
+        if (format[*idx + 1] == 'l' || format[*idx] == 'q'){
+            flag[5] = 4;
             *idx += 1;
         } else
-      	    flag[5] = 3;
-	*idx +=	1;
-	return 0;
+            flag[5] = 3;
+        *idx += 1;
+        return 0;
     }
     handler_len_modif2(format, idx, flag);
 }

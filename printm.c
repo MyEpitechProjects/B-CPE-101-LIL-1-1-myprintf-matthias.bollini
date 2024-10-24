@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2024
+** printm.c
+** File description:
+** printf fonction dictionnary
+*/
+
 #include "my.h"
 #include <stdarg.h>
 #include <stddef.h>
@@ -6,7 +13,7 @@
 static int print_formatted_sub7(char c, va_list list, int *data, char *flag)
 {
     unsigned long long tmp;
-    
+
     if ((c == 'o') && (flag[5] > 7 || flag[5] == 0)){
         tmp = va_arg(list, unsigned long long);
         if (flag[5] == 8)
@@ -37,13 +44,14 @@ static int print_formatted_sub6(char c, va_list list, int *data, char *flag)
         if (flag[5] == 3)
             return print_uns(oct((unsigned long) tmp), flag, data, flag[6]);
         if (flag[5] == 4)
-            return print_uns(oct((unsigned long long) tmp), flag, data, flag[6]);
+            return print_uns(oct((unsigned long long) tmp),
+                flag, data, flag[6]);
         if (flag[5] == 6)
             return print_uns(oct((uintmax_t) tmp), flag, data, flag[6]);
         if (flag[5] == 7)
-            return print_uns(oct((size_t) tmp), flag, data, flag[6]); 
+            return print_uns(oct((size_t) tmp), flag, data, flag[6]);
     }
-    return print_formatted_sub7(c, list, data, flag);;
+    return print_formatted_sub7(c, list, data, flag);
 }
 
 static int print_formatted_sub5(char c, va_list list, int *data, char *flag)
@@ -84,7 +92,7 @@ static int print_formatted_sub4(char c, va_list list, int *data, char *flag)
         if (flag[5] == 4)
             return print_hex((unsigned long long) tmp, flag, data, flag[6]);
     }
-    return print_formatted_sub5(c, list, data, flag);   
+    return print_formatted_sub5(c, list, data, flag);
 }
 
 static int print_formatted_sub3(char c, va_list list, int *data, char *flag)
@@ -114,7 +122,7 @@ static int print_formatted_sub2(char c, va_list list, int *data, char *flag)
 {
     long long tmp;
     unsigned long long tmp2;
-    
+
     if ((c == 'd' || c == 'i') && (flag[5] > 6 || flag[5] == 0)){
         tmp = va_arg(list, long long);
         if (flag[5] == 7)
@@ -139,7 +147,8 @@ int print_formatted(char c, va_list list, int *data, char *flag)
 
     if (flag[4] == '1')
         flag[6] = '0';
-    if ((c == 'd' || c == 'i') && (flag[5] != 0 && flag[5] != 5 && flag[5] < 7)){
+    if ((c == 'd' || c == 'i') &&
+        (flag[5] != 0 && flag[5] != 5 && flag[5] < 7)){
         tmp = va_arg(list, long long);
         if (flag[5] == 1)
             return print_int((signed char) tmp, flag, data, flag[6]);
@@ -154,4 +163,3 @@ int print_formatted(char c, va_list list, int *data, char *flag)
     }
     return print_formatted_sub2(c, list, data, flag);
 }
-

@@ -13,9 +13,9 @@
 static int putchar_upp(unsigned int az, int is_upper)
 {
     if (is_upper == 0)
-        return my_putchar(97+(az-10));
+        return my_putchar(97 + (az - 10));
     else
-        return my_putchar(65+(az-10));
+        return my_putchar(65 + (az - 10));
 }
 
 int my_putstrn(char const *str, int n)
@@ -36,21 +36,22 @@ int my_putchar(char c)
     write(1, &c, 1);
     return 1;
 }
+
 int print_hex_val(unsigned long long nb, int is_upper)
 {
     int nb2 = calc_division_num(nb);
     unsigned long long az;
     int idx = 0;
     int value = 0;
-    
+
     for (int i = nb2; i > 0; i--){
         az = nb;
-        for (int i2 = 0; i2 < i-1; i2++){
-            az = az/16;
+        for (int i2 = 0; i2 < i - 1; i2++){
+            az = az / 16;
         }
         az = az % 16;
         if (az < 10) {
-            value += my_putchar(48+az);
+            value += my_putchar(48 + az);
         } else {
             value += putchar_upp(az, is_upper);
         }
@@ -62,10 +63,11 @@ int print_hex_val(unsigned long long nb, int is_upper)
 int calc_division_num(unsigned long long nb)
 {
     int n = 0;
+
     if (nb == 0)
         return 1;
     while (nb != 0) {
-        nb = nb/16;
+        nb = nb / 16;
         n += 1;
     }
     return n;

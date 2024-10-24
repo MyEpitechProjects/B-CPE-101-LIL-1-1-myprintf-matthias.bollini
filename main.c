@@ -52,4 +52,5 @@ int main(void)
     my_printf("\nhello%05d",10);
     my_printf("\nsq%hh",99999999548);
     printf("\n%",50);
+    my_printf("\n%.0f",-5.65);
 }

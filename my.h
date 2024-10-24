@@ -31,7 +31,7 @@ int print_hex_val(unsigned long long nb, int is_upper);
 int print_hex_sub(unsigned long long val, char *flag, int *data, char c2);
 int print_formatted(char c, va_list list, int *data, char *flag);
 unsigned long long oct(unsigned long long nb);
-int my_put_float(double nbr, int pre);
-int calc_float_len(double nbr, unsigned int pre);
+int my_put_float(double nbr, int pre, char *flag);
+int calc_float_len(double nbr, unsigned int pre, char *flag);
 int print_float(double val, char *flag, int *data, char c2);
 #endif

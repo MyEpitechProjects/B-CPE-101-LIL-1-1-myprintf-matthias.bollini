@@ -13,14 +13,14 @@
 
 int print_float(double val, char *flag, int *data, char c2)
 {
-    int size = data[0] - calc_float_len(val, data[1]);
+    int size = data[0] - calc_float_len(val, data[1], flag);
     int value = 0;
 
     if (size < 0)
         size = 0;
     if (flag[0] == '0')
         value += draw_line(c2, size);
-    value += my_put_float(val, data[1]);
+    value += my_put_float(val, data[1], flag);
     if (flag[0] == '1')
         value += draw_line(' ', size);
     return value;

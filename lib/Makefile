@@ -20,7 +20,17 @@ SRC =   my_printf.c	\
 	utils5.c
 
 TEST =	../tests/test_my_printf.c	\
-	../include/my.h
+	../include/my.h			\
+	my_printf.c			\
+	print1.c			\
+	print2.c			\
+	printm.c			\
+	utils.c				\
+	utils2.c			\
+	utils3.c			\
+	utils4.c			\
+	utils5.c
+
 
 OBJ =   $(SRC:.c=.o)
 

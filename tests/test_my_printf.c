@@ -8,7 +8,6 @@
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 #include "../include/my.h"
-#include "../lib/libmy.a"
 
 void redirect_all_std(void)
 {

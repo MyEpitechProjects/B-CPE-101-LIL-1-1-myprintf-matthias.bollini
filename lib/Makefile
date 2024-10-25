@@ -29,12 +29,16 @@ all:    $(NAME)
 $(NAME):        $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
-test:
-	ar rc $(NAME2) $(TEST) --coverage -lcriterion
+unit_tests:	all
+	gcc -o $(NAME2) $(TEST) --coverage -lcriterion -I./include -L./ -lmy
 
 clean:
 	rm -f $(OBJ)
 	rm -f *.gcno
+	rm -f *.gcda
+
+tests_run:
+	./$(NAME2)
 
 fclean: clean
 	rm -f libmy.a

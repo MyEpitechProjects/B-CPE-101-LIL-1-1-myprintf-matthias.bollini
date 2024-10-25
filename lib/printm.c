@@ -10,7 +10,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <sys/types.h>
-static int print_formatted_sub8(char c, va_list list, int *data, char * flag)
+static int print_formatted_sub8(char c, va_list list, int *data, char *flag)
 {
     if (c == 'e' || c == 'E'){
         flag[6] = (c == 'E');
@@ -20,6 +20,7 @@ static int print_formatted_sub8(char c, va_list list, int *data, char * flag)
     }
     return 0;
 }
+
 static int print_formatted_sub7(char c, va_list list, int *data, char *flag)
 {
     unsigned long long tmp;

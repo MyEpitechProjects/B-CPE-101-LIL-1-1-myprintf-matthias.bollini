@@ -5,7 +5,6 @@
 ** utils2
 */
 
-
 #include "../include/my.h"
 #include <unistd.h>
 #include <stdarg.h>
@@ -14,14 +13,12 @@ static double fix_double(double val)
 {
     if (val < 1)
         return val * 10;
-    else{
+    else {
         while (val > 10)
             val = val / 10;
     }
     return val;
 }
-
-
 
 static int calc_int_len_science(long long val)
 {
@@ -38,6 +35,7 @@ static int calc_int_len_science(long long val)
     }
     return n - 1;
 }
+
 static int my_put_float_sub3_scl(int *tab, int tab2[], int pre, int padding)
 {
     int number = 0;
@@ -52,7 +50,7 @@ static int my_put_float_sub3_scl(int *tab, int tab2[], int pre, int padding)
     number += 1;
     if (padding > -1)
         number += 1;
-    else{
+    else {
         number += 1;
         padding = padding * -1;
     }
@@ -61,6 +59,7 @@ static int my_put_float_sub3_scl(int *tab, int tab2[], int pre, int padding)
     number += calc_int_len(padding);
     return number;
 }
+
 static int my_put_float_sub3_sc(int *tab, int tab2[], int pre, int padding)
 {
     int number = 0;
@@ -72,7 +71,6 @@ static int my_put_float_sub3_sc(int *tab, int tab2[], int pre, int padding)
     }
     if (tab2[3] == 49 && (pre == 0))
         number += my_putchar('.');
-    
     if (tab2[6] == 0)
         number += my_putchar('e');
     else if (tab2[6] == 1)
@@ -119,6 +117,7 @@ static int my_put_float_sub2_sc(double dec, int pre, int *tab, int *tab2)
     number += my_put_nbr((tab2[0]+fixed_len) * tab2[1]);
     return number;
 }
+
 static int my_put_float_sub_scl(double dec, int pre, int *tab, int tab2[])
 {
     int number = 0;
@@ -138,7 +137,7 @@ static int my_put_float_sub_sc(double dec, int pre, int *tab, int tab2[])
     number += my_put_float_sub3_sc(tab, tab2, pre, padding);
     if (padding > -1)
         number += my_putchar('+');
-    else{
+    else {
         number += my_putchar('-');
         padding = padding * -1;
     }
@@ -147,6 +146,7 @@ static int my_put_float_sub_sc(double dec, int pre, int *tab, int tab2[])
     number += my_put_nbr(padding);
     return number;
 }
+
 int my_put_science_float(double nbr, int pre, char *flag)
 {
     int number = 0;

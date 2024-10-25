@@ -13,7 +13,7 @@ int my_put_nbr(long long nb);
 int my_putstr(char const *str);
 int my_strlen(char const *str);
 int my_put_nbr_uns(unsigned long long nb);
-int calc_int_len(unsigned long long val);
+int calc_int_len(long long val);
 int calc_int_len_uns(unsigned long long val);
 int draw_line(char c, int val);
 int my_putstrn(char const *str, int n);

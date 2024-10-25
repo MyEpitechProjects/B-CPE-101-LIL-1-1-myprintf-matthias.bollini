@@ -31,7 +31,7 @@ int my_put_nbr(long long nb)
     int special = 0;
 
     if (nb < 0) {
-        count += my_putchar('-');
+        my_putchar('-');
         if (nb == -2147483648){
             nb = 214748364;
             special = 1;
@@ -61,11 +61,11 @@ int my_put_nbr_uns(unsigned long long nb)
     return count;
 }
 
-int calc_int_len(unsigned long long val)
+int calc_int_len(long long val)
 {
     int n = 0;
 
-    if (n < 0){
+    if (val < 0){
         n += 1;
         val = val * -1;
     }

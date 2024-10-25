@@ -74,10 +74,17 @@ int print_int(long long val, char *flag, int *data, char c2)
     int size = data[0] - calc_int_len(val);
     int value = 0;
 
-    if (size < 0)
-        size = 0;
-    if (flag[0] == '0')
+    if (flag[3] == '1' && val > -1)
+        size -= my_putchar('+');
+    else if (flag[1] == '1' && val > -1)
+        size -= my_putchar(' ');
+    if (flag[0] == '0'){
+        if (val < 0){
+            value += my_putchar('-');
+            val = val * -1;
+        }
         value += draw_line(c2, size);
+    }
     value += my_put_nbr(val);
     if (flag[0] == '1')
         value += draw_line(' ', size);

@@ -29,7 +29,7 @@ all:    $(NAME)
 $(NAME):        $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
-TEST:
+test:
 	ar rc $(NAME2) $(TEST) --coverage -lcriterion
 
 clean:

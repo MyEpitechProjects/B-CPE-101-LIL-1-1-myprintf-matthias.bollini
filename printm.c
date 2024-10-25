@@ -10,6 +10,16 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <sys/types.h>
+static int print_formatted_sub8(char c, va_list list, int *data, char * flag)
+{
+    if (c == 'e' || c == 'E'){
+        flag[6] = (c == 'E');
+        if (data[1] == -1)
+            data[1] = 6;
+        return print_float_sc(va_arg(list, double), flag, data, flag[6]);
+    }
+    return 0;
+}
 static int print_formatted_sub7(char c, va_list list, int *data, char *flag)
 {
     unsigned long long tmp;
@@ -29,7 +39,7 @@ static int print_formatted_sub7(char c, va_list list, int *data, char *flag)
             data[1] = 6;
         return print_float(va_arg(list, double), flag, data, flag[6]);
     }
-    return 0;
+    return print_formatted_sub8(c, list, data, flag);
 }
 
 static int print_formatted_sub6(char c, va_list list, int *data, char *flag)

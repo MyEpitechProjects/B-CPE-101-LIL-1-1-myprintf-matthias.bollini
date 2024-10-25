@@ -120,7 +120,7 @@ static int handler_len_modif(const char *format, int *idx, char *flag)
 
 static int handler_spe(const char *format, va_list list, int *idx)
 {
-    char flag[] = "00000000";
+    char flag[] = "000000000";
     int data[5] = {-1, -1, 0, 0};
     int value = 0;
 

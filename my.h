@@ -33,4 +33,8 @@ unsigned long long oct(unsigned long long nb);
 int my_put_float(double nbr, int pre, char *flag);
 int calc_float_len(double nbr, unsigned int pre, char *flag);
 int print_float(double val, char *flag, int *data, char c2);
+int my_put_science_float_len(double nbr, int pre, char *flag);
+int my_put_science_float(double nbr, int pre, char *flag);
+int print_float_sc(double val, char *flag, int *data, char c2);
+int fix_tab(int pre, int *tab);
 #endif

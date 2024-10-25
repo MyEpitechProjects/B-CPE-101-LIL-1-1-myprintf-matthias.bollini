@@ -16,6 +16,8 @@ int print_float(double val, char *flag, int *data, char c2)
     int size = data[0] - calc_float_len(val, data[1], flag);
     int value = 0;
 
+    if (val < 0 && flag[0] == '1')
+        value += 1;
     if (flag[3] == '1' && val > -1)
         size -= my_putchar('+');
     else if (flag[1] == '1' && val > -1)
@@ -38,6 +40,8 @@ int print_float_sc(double val, char *flag, int *data, char c2)
     int size = data[0] - my_put_science_float_len(val, data[1], flag);
     int value = 0;
 
+    if (val < 0 && flag[0] == '1')
+        value += 1;
     if (flag[3] == '1' && val > -1)
         size -= my_putchar('+');
     else if (flag[1] == '1' && val > -1)

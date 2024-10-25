@@ -74,6 +74,8 @@ int print_int(long long val, char *flag, int *data, char c2)
     int size = data[0] - calc_int_len(val);
     int value = 0;
 
+    if (val < 0 && flag[0] == '1')
+        value += 1;
     if (flag[3] == '1' && val > -1)
         size -= my_putchar('+');
     else if (flag[1] == '1' && val > -1)

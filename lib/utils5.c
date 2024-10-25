@@ -6,10 +6,9 @@
 */
 
 
-#include "my.h"
+#include "../include/my.h"
 #include <unistd.h>
 #include <stdarg.h>
-#include "my.h"
 
 static double fix_double(double val)
 {

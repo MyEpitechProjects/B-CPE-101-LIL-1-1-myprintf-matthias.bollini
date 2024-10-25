@@ -5,7 +5,7 @@
 ** print number
 */
 
-#include "my.h"
+#include "../include/my.h"
 #include <stdarg.h>
 
 static int print_num(unsigned long long nb,

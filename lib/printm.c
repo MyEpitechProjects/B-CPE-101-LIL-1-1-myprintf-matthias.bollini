@@ -5,7 +5,7 @@
 ** printf fonction dictionnary
 */
 
-#include "my.h"
+#include "../include/my.h"
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>

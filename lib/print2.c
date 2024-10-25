@@ -6,7 +6,7 @@
 */
 
 
-#include "my.h"
+#include "../include/my.h"
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>

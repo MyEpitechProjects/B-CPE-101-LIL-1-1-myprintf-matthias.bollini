@@ -5,7 +5,7 @@
 ** print_str
 */
 
-#include "my.h"
+#include "../include/my.h"
 #include <stdarg.h>
 static int print_hex_sub(unsigned long long val,
     char *flag, int *data, char c2)

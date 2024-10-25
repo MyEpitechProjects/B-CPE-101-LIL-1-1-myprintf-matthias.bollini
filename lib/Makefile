@@ -9,10 +9,18 @@ NAME =  libmy.a
 
 NAME2 = test_of_printf
 
-SRC =   my_printf.c\print1.c\print2.c\printm.c\
-	utils.c\utils2.c\utils3.c\utils4.c\utils5.c
+SRC =   my_printf.c	\
+	print1.c	\
+	print2.c	\
+	printm.c	\
+	utils.c		\
+	utils2.c	\
+	utils3.c	\
+	utils4.c	\
+	utils5.c
 
-TEST =	../tests/test_my_printf.c\../include/my.h
+TEST =	../tests/test_my_printf.c	\
+	../include/my.h
 
 OBJ =   $(SRC:.c=.o)
 

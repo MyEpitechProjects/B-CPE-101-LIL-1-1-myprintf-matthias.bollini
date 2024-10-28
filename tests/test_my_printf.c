@@ -2,9 +2,8 @@
 ** EPITECH PROJECT, 2024
 ** test_my_printf.c
 ** File description:
-** test printf
+** test my_printf
 */
-
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 #include "../include/my.h"
@@ -45,7 +44,6 @@ Test(my_printf, test_du_d2, .init = redirect_all_std)
 Test(my_printf, test_du_n_plus_s, .init = redirect_all_std)
 {
     int n2 = 50;
-    
     my_printf("%s: %nFoo\n", "hello", &n2);
     my_printf("%*sBar\n", n2, "");
     cr_assert_stdout_eq_str("hello: Foo\n       Bar\n");

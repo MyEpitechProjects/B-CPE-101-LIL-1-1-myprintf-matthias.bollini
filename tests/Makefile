@@ -7,7 +7,7 @@
 
 NAME=	test_of_printf
 
-TEST =	test_my_printf.c	\
+TEST =  test_my_printf.c	\
 	../include/my.h		\
 	../lib/my_printf.c	\
 	../lib/print1.c		\

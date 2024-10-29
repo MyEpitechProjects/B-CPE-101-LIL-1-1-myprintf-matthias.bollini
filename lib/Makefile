@@ -20,6 +20,7 @@ SRC =   my_printf.c	\
 OBJ =   $(SRC:.c=.o)
 
 all:    $(NAME)
+	cp libmy.a ../
 
 $(NAME):        $(OBJ)
 	ar rc $(NAME) $(OBJ)

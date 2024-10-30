@@ -32,7 +32,7 @@ static int my_put_float_len_sub(double dec, int pre, int *tab, int *tab2)
         int_dec = (dec * 10) / 1;
         tab[i] = int_dec;
         dec = (dec * 10) - int_dec;
-        if (((i == pre - 1) || (i == 0 && pre != 0))
+        if (((i == pre - 1) && (pre != 0))
             && ((int) (dec * 10)) >= 5){
             tab[i] += 1;
             fixed_len = fix_tab(pre, tab);
@@ -65,7 +65,7 @@ static int my_put_float_sub(double dec, int pre, int *tab, int tab2[])
         int_dec = (dec * 10) / 1;
         tab[i] = int_dec;
         dec = (dec * 10) - int_dec;
-        if (((i == pre - 1) || (i == 0 && pre != 0))
+        if (((i == pre - 1) && (pre != 0))
             && ((int) (dec * 10)) >= 5){
             tab[i] += 1;
             fixed_len = (int) fix_tab(pre, tab);
@@ -79,7 +79,7 @@ static int my_put_float_sub(double dec, int pre, int *tab, int tab2[])
 int fix_tab(int pre, int *tab)
 {
     if (pre == 0)
-        return tab[0] >= 5;
+        return 0;
     for (int i = pre - 1; i > - 1; i--){
         if (tab[i] < 10)
             return 0;

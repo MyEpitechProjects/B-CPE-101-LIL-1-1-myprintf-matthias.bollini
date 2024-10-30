@@ -81,3 +81,9 @@ Test(my_printf, test_impossible4, .init = redirect_all_std)
     my_printf("%.0f", 123.456);
     cr_assert_stdout_eq_str("123");
 }
+
+Test(my_printf, test_impossible5, .init = redirect_all_std)
+{
+    my_printf("%056d%s%010i", 1257, "bonjour", 568687);
+    cr_assert_stdout_eq_str("00000000000000000000000000000000000000000000000000001257bonjour0000568687");
+}

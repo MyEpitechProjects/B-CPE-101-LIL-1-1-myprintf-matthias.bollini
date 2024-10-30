@@ -102,8 +102,19 @@ Test(my_printf, test_printf38, .init = redirect_all_std)
     my_printf("%x",789000);
     cr_assert_stdout_eq_str("c0a08");
 }
-Test(my_printf, test_printf39, .init = redirect_all_std)
+Test(my_printf, test_h_all_len_modif, .init = redirect_all_std)
 {
-    my_printf("%hhd",1250000000);
-    cr_assert_stdout_eq_str("-128");
+    long int b = 12500000000000000;
+    long long int a = 1250000000000000000;
+    my_printf("%hhd\n,%hd\n,%ld\n,%lld\n,%jd\n,%zd\n,%td\n",1250000000,1250000000, b, a, b, b, b);
+    cr_assert_stdout_eq_str("-128\n,31872\n,12500000000000000\n,1250000000000000000\n,12500000000000000\n,12500000000000000\n,12500000000000000\n");
+}
+Test(my_printf, test_printf40, .init = redirect_all_std)
+{
+    my_printf("%c",70);
+    cr_assert_stdout_eq_str("F");
+}
+Test(my_printf, test_printf41, .init = redirect_all_std)
+{
+
 }

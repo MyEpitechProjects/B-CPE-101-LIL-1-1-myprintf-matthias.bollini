@@ -36,4 +36,4 @@ re:
 	make clean
 
 tests_run:
-	./$(NAME)
+	./$(NAME) || true

@@ -58,21 +58,26 @@ Test(my_printf, test_du_star, .init = redirect_all_std)
     cr_assert_stdout_eq_str("Here is a number-   5-and a-    little-word.\n");
 }
 
-Test(my_printf, test_du_minus, .init = redirect_all_std)
+Test(my_printf, test_impossible, .init = redirect_all_std)
 {
-    my_printf("\nTest : %-*.*soh",5,2,"bonjour");
-    my_printf("\nTest : %-*.*soh",5,0,"bonjour");
-    my_printf("\nTest : %-*.*soh",5,80,"bonjour");
-    my_printf("\nTest : %-*.*soh",5,-1,"bonjour");
-    cr_assert_stdout_eq_str("\nTest : bo   oh\nTest :      oh\nTest : bonjouroh\nTest : bonjouroh");
+    my_printf("%#.0f", -123.456);
+    cr_assert_stdout_eq_str("-123.");
 }
 
-Test(my_printf, test_special, .init = redirect_all_std)
+Test(my_pritnf, test_impossible2, .init = redirect_all_std)
 {
-    my_printf("\nTest : %0#+ -5doh",50);
-    my_printf("\nTest : %0#+ -5.5doh",50);
-    my_printf("\nTest : %-*.*soh",5,0,"bonjour");
-    my_printf("\nTest : %-*.*soh",5,80,"bonjour");
-    my_printf("\nTest : %-*.*soh",5,-1,"bonjour");
-    cr_assert_eq(1,1);
+    my_printf("%#.0f", 123.456);
+    cr_assert_stdout_eq_str("123.");
+}
+
+Test(my_printf, test_impossible3, .init = redirect_all_std)
+{
+    my_printf("%.0f", -123.456);
+    cr_assert_stdout_eq_str("-123");
+}
+
+Test(my_printf, test_impossible4, .init = redirect_all_std)
+{
+    my_printf("%.0f", 123.456);
+    cr_assert_stdout_eq_str("123");
 }

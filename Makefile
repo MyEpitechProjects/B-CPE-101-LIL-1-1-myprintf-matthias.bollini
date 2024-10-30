@@ -16,7 +16,9 @@ clean:
 	make clean -C tests/
 
 tests_run:
-	make tests_run
+	make tests_run -C tests/
+	gcovr --exclude tests/
+	gcovr --exclude tests/ --branches
 
 fclean:
 	make fclean -C lib/

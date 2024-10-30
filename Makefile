@@ -18,7 +18,7 @@ clean:
 tests_run:
 	make tests_run -C tests/
 	gcovr --exclude tests/
-	gcovr --exclude tests/ --branches
+	gcovr --exclude tests/ --txt-metric branch
 
 fclean:
 	make fclean -C lib/

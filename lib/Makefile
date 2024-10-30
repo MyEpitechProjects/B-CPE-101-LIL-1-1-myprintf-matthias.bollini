@@ -30,5 +30,6 @@ clean:
 
 fclean: clean
 	rm -f libmy.a
+	rm -f a.out
 
 re: all clean

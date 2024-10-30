@@ -21,6 +21,7 @@ tests_run:
 fclean:
 	make fclean -C lib/
 	make fclean -C tests/
+	rm -f libmy.a
 
 re:
 	make all -C lib/

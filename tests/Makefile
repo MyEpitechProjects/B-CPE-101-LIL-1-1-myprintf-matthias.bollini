@@ -8,7 +8,16 @@
 NAME=	test_of_printf
 
 TEST =	../include/my.h		\
-	test_my_printf.c
+	test_my_printf.c		\
+	../lib/my_printf.c		\
+	../lib/print1.c			\
+	../lib/print2.c			\
+	../lib/printm.c			\
+	../lib/utils.c			\
+	../lib/utils2.c			\
+	../lib/utils3.c			\
+	../lib/utils4.c			\
+	../lib/utils5.c
 
 unit_tests:
 	make all -C ../lib

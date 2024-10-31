@@ -114,7 +114,48 @@ Test(my_printf, test_printf40, .init = redirect_all_std)
     my_printf("%c",70);
     cr_assert_stdout_eq_str("F");
 }
-Test(my_printf, test_printf41, .init = redirect_all_std)
+Test(my_printf, test_printfi, .init = redirect_all_std)
 {
-
+    long int d = 12500000000000000;
+    long long int c = 1250000000000000000;
+    my_printf("%hhi\n,%hi\n,%li\n,%lli\n,%ji\n,%zi\n,%ti\n",1250000000,1250000000, d, c, d, d, d);
+    cr_assert_stdout_eq_str("-128\n,31872\n,12500000000000000\n,1250000000000000000\n,12500000000000000\n,12500000000000000\n,12500000000000000\n");
+}
+Test(my_printf, tests_of_o, .init = redirect_all_std)
+{
+    long int e = 12500000000000000;
+    long long int f = 1250000000000000000;
+    my_printf("%hho\n,%ho\n,%lo\n,%jo\n,%zo\n,%to\n",1250000000,1250000000, e, e, e, e);
+    cr_assert_stdout_eq_str("200\n,76200\n,543212741354240000\n,543212741354240000\n,543212741354240000\n,543212741354240000\n");
+}
+Test(my_printf, tests_of_u, .init = redirect_all_std)
+{
+    int g = 12500000;
+    long int u = 46164516166544;
+    long long int h = 5432164;
+    my_printf("%hhu\n,%hu\n,%lu\n,%llu\n,%ju\n,%zu\n,%tu\n", 8456187, g, u, h, u, u, u);
+    cr_assert_stdout_eq_str("251\n,48160\n,46164516166544\n,5432164\n,46164516166544\n,46164516166544\n,46164516166544\n");
+}
+Test(my_printf, tests_of_x, .init = redirect_all_std)
+{
+    long int i = 12500000000000000;
+    long long int j = 1250000000000000000;
+    my_printf("%hhx\n,%hx\n,%lx\n,%llx\n,%jx\n,%zx\n,%tx\n",1250000000,1250000000, i, j, i, i, i);
+    cr_assert_stdout_eq_str("80\n,7c80\n,2c68af0bb14000\n,1158e460913d0000\n,2c68af0bb14000\n,2c68af0bb14000\n,2c68af0bb14000\n");
+}
+Test(my_printf, tests_of_e, .init = redirect_all_std)
+{
+    my_printf("%e\n", 15876556.688464698);
+    cr_assert_stdout_eq_str("1.587656e+07\n");
+}
+Test(my_printf, tests_of_f, .init = redirect_all_std)
+{
+    my_printf("%f\n", 15876556.688464698);
+    cr_assert_stdout_eq_str("15876556.688465\n");
+}
+Test(my_printf, flag_test, .init = redirect_all_std)
+{
+    void *a = "bonjour";
+    my_printf("%d\n%i\n%o\n%u\n%x\n%e\n%f\n%c\n%s\n%p\n%%\n", 125, 250, 1254, 4587, 5698, 458.652, 478.619, 78, "bonjour", a);
+    cr_assert_stdout_eq_str("125\n250\n2346\n4587\n1642\n4.586520e+02\n478.619000\nN\nbonjour\n0x5a411c599008\n%\n");
 }

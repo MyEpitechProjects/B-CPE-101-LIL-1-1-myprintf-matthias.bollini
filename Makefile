@@ -2,13 +2,14 @@
 ## EPITECH PROJECT, 2024
 ## Makefile
 ## File description:
-## makefile my_printf
+## makefile my_printf manager
 ##
 
 all:
 	make -C lib/
 
 unit_tests:
+	make fclean
 	make unit_tests -C tests/
 
 clean:
@@ -16,9 +17,11 @@ clean:
 	make clean -C tests/
 
 tests_run:
+	make unit_tests
 	make tests_run -C tests/
 	gcovr --exclude tests/
 	gcovr --exclude tests/ --txt-metric branch
+	make tests_run -C tests/
 
 fclean:
 	make fclean -C lib/
